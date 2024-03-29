@@ -6,16 +6,19 @@ class Number
 public:
 	Number(const char* value, int base); 
 	Number(int val);
+	Number(Number& n);
+	Number(Number&& n);
 	~Number();
 	friend Number& operator+(Number& n, Number& m);
 	friend Number& operator-(Number& n, Number& m);
 	char operator[](int index);
 	bool operator>(Number& n);
 	Number& operator=(int nr);
+	Number& operator=(Number& n);
 	Number& operator=(const char* value);
 	Number& operator+=(Number& n);
 	friend Number& operator--(Number& n);
-	friend Number& operator--(Number& n, int val); //?
+	friend Number& operator--(Number& n, int val); 
 	void SwitchBase(int newBase);
 	void Print();
 	int  GetDigitsCount(); 

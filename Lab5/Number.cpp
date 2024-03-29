@@ -47,6 +47,19 @@ Number::Number(int val)
 	for (int j = 0;j < i / 2;j++)
 		std::swap(this->val[j], this->val[i - j - 1]);
 }
+Number::Number(Number& n)
+{
+	this->nr10 = n.nr10;
+	this->base = n.base;
+	this->val = n.val;
+}
+Number::Number(Number&& n)
+{
+	this->val = n.val;
+	n.val = nullptr;
+	this->base = n.base;
+	this->nr10 = n.nr10;
+}
 Number::~Number()
 {
 	delete[]val;
@@ -133,6 +146,13 @@ Number& Number::operator=(int nr)
 		std::swap(this->val[j], this->val[i - j - 1]);
 	return (*this);
 }
+Number& Number::operator=(Number& n)
+{
+	this->nr10 = n.nr10;
+	this->base = n.base;
+	this->val = n.val;
+	return (*this);
+}
 Number& Number::operator=(const char* value)
 {
 	this->val = (char*)value;
@@ -169,7 +189,6 @@ Number& Number::operator+=(Number& n)
 Number& operator--(Number& n)
 {
 	int i = 0, l = n.GetDigitsCount();
-	char c;
 	char* v = new char[l];
 	for (i = 0;i < l - 1;i++)
 		v[i] = n[i+1];

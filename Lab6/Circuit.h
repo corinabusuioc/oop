@@ -18,5 +18,6 @@ public:
 	void Race();
 	void ShowFinalRanks(); 
 	void ShowWhoDidNotFinish();
+	~Circuit();
 };
 

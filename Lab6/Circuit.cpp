@@ -63,3 +63,10 @@ void Circuit::ShowWhoDidNotFinish()
 		if (rank[i].ok == 0)
 			printf("%s\n", rank[i].nume);
 }
+Circuit::~Circuit()
+{
+	delete[]rank;
+	for (int i = 0;i < this->nr;i++)
+		delete car[i];
+	delete[]car;
+}
